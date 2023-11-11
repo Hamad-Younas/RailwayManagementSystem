@@ -3,6 +3,7 @@ package com.example.pr.data;
 
 import android.content.ContentValues;
 import android.content.Context;
+import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.util.Log;
@@ -36,6 +37,41 @@ public class dbHandler extends SQLiteOpenHelper {
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
         // Handle database schema upgrades here if needed
     }
+    public boolean signInUser(String email, String password) {
+        SQLiteDatabase db = this.getReadableDatabase();
+
+        // Define the columns you want to retrieve
+        String[] columns = {param.KEY_ID};
+
+        // Define the selection criteria
+        String selection = param.KEY_EMAIL + " = ?" + " AND " + param.KEY_PASSWORD + " = ?";
+
+        // Define the selection arguments
+        String[] selectionArgs = {email, password};
+
+        // Query the database
+        Cursor cursor = db.query(
+                param.TABLE_NAME,  // Table to query
+                columns,            // Columns to return
+                selection,          // Columns for the WHERE clause
+                selectionArgs,      // Values for the WHERE clause
+                null,               // Don't group the rows
+                null,               // Don't filter by row groups
+                null                // The sort order
+        );
+
+        // Check if the cursor has a valid row (user found)
+        boolean signInSuccess = cursor != null && cursor.moveToFirst();
+
+        // Close the cursor and the database
+        if (cursor != null) {
+            cursor.close();
+        }
+        db.close();
+
+        return signInSuccess;
+    }
+
 
     public void addUser(users user) {
         SQLiteDatabase db = this.getWritableDatabase();

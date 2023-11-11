@@ -10,19 +10,19 @@
         android:id="@+id/signup"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="160dp"
+        android:layout_marginStart="148dp"
         android:layout_marginTop="424dp"
         android:text="Sign Up"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <Button
-        android:id="@+id/button2"
+        android:id="@+id/signinmainbtn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="40dp"
-        android:layout_marginEnd="2dp"
-        android:text="Button"
+        android:layout_marginTop="48dp"
+        android:layout_marginEnd="4dp"
+        android:text="Sign In"
         app:layout_constraintEnd_toEndOf="@+id/signup"
         app:layout_constraintTop_toBottomOf="@+id/signup" />
 

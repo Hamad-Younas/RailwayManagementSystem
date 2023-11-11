@@ -16,6 +16,13 @@
             android:name=".signUp"
             android:exported="false" />
         <activity
+            android:name=".userMainPage"
+            android:exported="false" />
+        <activity
+            android:name=".sign_in"
+            android:exported="false"
+            tools:ignore="DuplicateActivity" />
+        <activity
             android:name=".MainActivity"
             android:exported="true">
             <intent-filter>
@@ -24,6 +31,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
     </application>
 
 </manifest>
