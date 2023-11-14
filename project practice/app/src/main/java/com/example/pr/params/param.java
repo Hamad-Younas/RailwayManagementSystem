@@ -14,4 +14,11 @@ public class param {
     public static final String KEY_PASSWORD="password";
     public static final String KEY_ADDRESS="address";
     public static final String KEY_PHONE="phone_number";
+
+
+
+    public static final String TABLE_NAME_STATIONS = "stations";
+    public static final String KEY_STATION_ID = "station_id";
+    public static final String KEY_STATION_NAME = "station_name";
+    public static final String KEY_LOCATION = "location";
 }

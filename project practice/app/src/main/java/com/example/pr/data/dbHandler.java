@@ -10,7 +10,7 @@ import android.util.Log;
 
 import com.example.pr.model.users;
 import com.example.pr.params.param;
-
+import com.example.pr.model.stations;
 public class dbHandler extends SQLiteOpenHelper {
 
     public dbHandler(Context context) {
@@ -30,6 +30,16 @@ public class dbHandler extends SQLiteOpenHelper {
                 + ")";
         Log.d("db", "Query being run is: " + create);
         db.execSQL(create);
+
+
+        String createStationTable = "CREATE TABLE " + param.TABLE_NAME_STATIONS + "("
+                + param.KEY_STATION_ID + " INTEGER PRIMARY KEY, "
+                + param.KEY_STATION_NAME + " TEXT, "
+                + param.KEY_LOCATION + " TEXT"
+                + ")";
+        db.execSQL(createStationTable);
+
+        Log.d("db", "Station created successfully");
     }
 
 
@@ -83,4 +93,18 @@ value.put(param.KEY_PASSWORD,user.getPassword());
 value.put(param.KEY_ADDRESS,user.getAddress());
 value.put(param.KEY_PHONE,user.getPhonenum());db.insert(param.TABLE_NAME,null,value); Log.d("db", "Successfully inserted");
 db.close();
-}}
+
+
+
+}
+    public void addStation(stations station) {
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues values = new ContentValues();
+        values.put(param.KEY_STATION_NAME, station.getStationName());
+        values.put(param.KEY_LOCATION, station.getLoc());
+
+        db.insert(param.TABLE_NAME_STATIONS, null, values);
+        Log.d("db", "Station inserted successfully");
+        db.close();
+    }
+}

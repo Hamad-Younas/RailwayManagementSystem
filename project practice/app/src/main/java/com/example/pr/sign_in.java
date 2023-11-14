@@ -1,6 +1,7 @@
 package com.example.pr;
 
 import android.annotation.SuppressLint;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -40,22 +41,41 @@ public class sign_in extends AppCompatActivity {
                 String email = emailEditText.getText().toString().trim();
                 String password = passwordEditText.getText().toString().trim();
 
-                // Check if the email and password are not empty
-                if (!email.isEmpty() && !password.isEmpty()) {
-                    // Call the signInUser method from dbHandler
-                    if (databaseHandler.signInUser(email, password)) {
-                        // Sign-in successful
-                        Toast.makeText(sign_in.this, "Sign-in successful", Toast.LENGTH_SHORT).show();
-                        // You can navigate to the next activity or perform any other action here
-                    } else {
-                        // Sign-in failed
-                        Toast.makeText(sign_in.this, "Invalid email or password", Toast.LENGTH_SHORT).show();
-                    }
+                // Check if the entered credentials are for admin
+                if (email.equals("admin@gmail.com") && password.equals("admin")) {
+                    // Admin sign-in successful
+                    Toast.makeText(sign_in.this, "Admin sign-in successful", Toast.LENGTH_SHORT).show();
+                    // Open AdminMainPage
+                    openAdminMainPage();
                 } else {
-                    // Handle case where email or password is empty
-                    Toast.makeText(sign_in.this, "Please enter email and password", Toast.LENGTH_SHORT).show();
+                    // Check if the email and password are not empty
+                    if (!email.isEmpty() && !password.isEmpty()) {
+                        // Call the signInUser method from dbHandler
+                        if (databaseHandler.signInUser(email, password)) {
+                            // Sign-in successful
+                            Toast.makeText(sign_in.this, "Sign-in successful", Toast.LENGTH_SHORT).show();
+                            // You can navigate to the next activity or perform any other action here
+                            openUserMainPage();
+                        } else {
+                            // Sign-in failed
+                            Toast.makeText(sign_in.this, "Invalid email or password", Toast.LENGTH_SHORT).show();
+                        }
+                    } else {
+                        // Handle case where email or password is empty
+                        Toast.makeText(sign_in.this, "Please enter email and password", Toast.LENGTH_SHORT).show();
+                    }
                 }
             }
         });
+    }
+
+    public void openUserMainPage() {
+        Intent intent = new Intent(this, userMainPage.class);
+        startActivity(intent);
+    }
+
+    public void openAdminMainPage() {
+        Intent intent = new Intent(this, adminMainPage.class);
+        startActivity(intent);
     }
 }

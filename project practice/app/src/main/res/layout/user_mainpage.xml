@@ -9,18 +9,120 @@
         android:id="@+id/dettextuser"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginEnd="32dp"
+        android:layout_marginBottom="24dp"
         android:text="We’re a great big rolling railroad "
         android:textSize="16dp"
-        tools:layout_editor_absoluteX="53dp"
-        tools:layout_editor_absoluteY="168dp" />
+        app:layout_constraintBottom_toTopOf="@+id/imageView3"
+        app:layout_constraintEnd_toEndOf="@+id/imageView3"
+        app:layout_constraintTop_toBottomOf="@+id/welcometxt2" />
 
     <TextView
         android:id="@+id/welcometxt2"
         android:layout_width="170dp"
-        android:layout_height="27dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="113dp"
+        android:layout_marginBottom="28dp"
         android:text="Welcome Back"
         android:textSize="20dp"
         android:textStyle="bold"
-        tools:layout_editor_absoluteX="16dp"
-        tools:layout_editor_absoluteY="113dp" />
+        app:layout_constraintBottom_toTopOf="@+id/dettextuser"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/imageView3"
+        android:layout_width="201dp"
+        android:layout_height="131dp"
+        app:layout_constraintBottom_toTopOf="@+id/tripbtn"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/dettextuser"
+        app:srcCompat="@drawable/train" />
+
+    <Button
+        android:id="@+id/tripbtn"
+        android:layout_width="217dp"
+        android:layout_height="0dp"
+        android:backgroundTint="#C6D3DD"
+        android:text="Book a trip"
+        android:textColorHighlight="#3F51B5"
+        android:textColorHint="#322828"
+        android:textColorLink="#BC8C8C"
+        app:layout_constraintBottom_toTopOf="@+id/triphistorybtn"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageView3" />
+
+    <Button
+        android:id="@+id/triphistorybtn"
+        android:layout_width="217dp"
+        android:layout_height="0dp"
+        android:backgroundTint="#C6D3DD"
+        android:text="View trip history"
+        android:textColorHighlight="#3F51B5"
+        android:textColorHint="#322828"
+        android:textColorLink="#BC8C8C"
+        app:layout_constraintBottom_toTopOf="@+id/cancelbookingbtn"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tripbtn" />
+
+    <Button
+        android:id="@+id/cancelbookingbtn"
+        android:layout_width="217dp"
+        android:layout_height="0dp"
+        android:backgroundTint="#C6D3DD"
+        android:text="Cancel booking"
+        android:textColorHighlight="#3F51B5"
+        android:textColorHint="#322828"
+        android:textColorLink="#BC8C8C"
+        app:layout_constraintBottom_toTopOf="@+id/discbtn"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/triphistorybtn" />
+
+    <Button
+        android:id="@+id/discbtn"
+        android:layout_width="217dp"
+        android:layout_height="0dp"
+        android:backgroundTint="#C6D3DD"
+        android:text="Latest news and discounts"
+        android:textColorHighlight="#3F51B5"
+        android:textColorHint="#322828"
+        android:textColorLink="#BC8C8C"
+        app:layout_constraintBottom_toTopOf="@+id/questionbtn"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/cancelbookingbtn" />
+
+    <Button
+        android:id="@+id/questionbtn"
+        android:layout_width="217dp"
+        android:layout_height="0dp"
+        android:layout_marginBottom="67dp"
+        android:backgroundTint="#C6D3DD"
+        android:text="Ask a question"
+        android:textColorHighlight="#3F51B5"
+        android:textColorHint="#322828"
+        android:textColorLink="#BC8C8C"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/discbtn" />
+
+    <Button
+        android:id="@+id/logoutbtnsignin"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:backgroundTint="#C6D3DD"
+        android:text="Log out"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.949"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.972" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

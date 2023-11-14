@@ -19,6 +19,10 @@
             android:name=".userMainPage"
             android:exported="false" />
         <activity
+            android:name=".adminMainPage"
+            android:exported="false" />
+
+        <activity
             android:name=".sign_in"
             android:exported="false"
             tools:ignore="DuplicateActivity" />
