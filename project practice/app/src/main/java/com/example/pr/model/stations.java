@@ -26,14 +26,14 @@ public class stations {
     }
 
     public void setLoc(String Loc) {
-        this.loc = Loc;  // Fix: Assign the parameter Loc to the class variable loc
+        this.loc = Loc;
     }
 
-    public int getId() {  // Fix: Change return type to int
+    public int getId() {
         return id;
     }
 
-    public void setId(int Id) {  // Fix: Change parameter type to int
+    public void setId(int Id) {
         id = Id;
     }
 }

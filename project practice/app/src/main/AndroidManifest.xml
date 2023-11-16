@@ -16,10 +16,16 @@
             android:name=".signUp"
             android:exported="false" />
         <activity
+            android:name=".adminManageUser"
+            android:exported="false" />
+        <activity
             android:name=".userMainPage"
             android:exported="false" />
         <activity
             android:name=".adminMainPage"
+            android:exported="false" />
+        <activity
+            android:name=".addStation"
             android:exported="false" />
 
         <activity

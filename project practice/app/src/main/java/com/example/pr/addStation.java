@@ -12,25 +12,29 @@ import com.example.pr.data.dbHandler;
 import com.example.pr.model.stations;
 
 public class addStation extends AppCompatActivity {
-    EditText stationName,location;
+    EditText stationName, location;
     Button button;
+
     @SuppressLint("MissingInflatedId")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.add_station);
-        stationName=findViewById(R.id.stationnametxt);
-        location=findViewById(R.id.locationtxt);
 
-        button=(Button)findViewById(R.id.addbtn);
+        stationName = findViewById(R.id.stationnametxt);
+        location = findViewById(R.id.locationtxt);
+
+        button = findViewById(R.id.addbtn);
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 dbHandler db = new dbHandler(addStation.this);
-                stations user = new stations();
-                user.setStationName(stationName.getText().toString().trim());
-                user.setLoc(location.getText().toString().trim());
-                db.addStation(user);
+                stations station = new stations();
+                station.setStationName(stationName.getText().toString().trim());
+                station.setLoc(location.getText().toString().trim());
+                db.addStation(station);
+
+           
             }
         });
     }
