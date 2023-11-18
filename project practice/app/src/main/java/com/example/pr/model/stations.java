@@ -1,39 +1,38 @@
 package com.example.pr.model;
 
 public class stations {
-    private String StationName;
-    private String loc;
+    private String stationName;
+    private String Loc;
     private int id;
 
     public stations(String stationName, String Loc) {
-        StationName = stationName;
-        loc = Loc;
+        this.stationName = stationName;
+        this.Loc = Loc;
     }
 
-    // Default constructor
     public stations() {}
 
     public String getStationName() {
-        return StationName;
+        return stationName;
     }
 
     public void setStationName(String stationName) {
-        StationName = stationName;
+        this.stationName = stationName;
     }
 
     public String getLoc() {
-        return loc;
+        return Loc;
     }
 
     public void setLoc(String Loc) {
-        this.loc = Loc;
+        this.Loc = Loc;
     }
 
     public int getId() {
         return id;
     }
 
-    public void setId(int Id) {
-        id = Id;
+    public void setId(int id) {
+        this.id = id;
     }
 }

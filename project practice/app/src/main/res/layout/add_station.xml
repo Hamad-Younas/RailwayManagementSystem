@@ -6,45 +6,79 @@
     android:layout_height="match_parent">
 
     <EditText
-        android:id="@+id/stationnametxt"
+        android:id="@+id/stationnametxtstation"
         android:layout_width="348dp"
         android:layout_height="44dp"
-        android:layout_marginTop="199dp"
         android:ems="10"
         android:inputType="text"
         android:text="Station Name"
-        app:layout_constraintEnd_toEndOf="@+id/locationtxt"
-        app:layout_constraintStart_toStartOf="@+id/locationtxt"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintBottom_toTopOf="@+id/locationtxtstation"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.492"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.756" />
 
     <EditText
-        android:id="@+id/locationtxt"
+        android:id="@+id/locationtxtstation"
         android:layout_width="336dp"
         android:layout_height="59dp"
-        android:layout_marginStart="54dp"
-        android:layout_marginTop="61dp"
         android:ems="10"
         android:inputType="text"
         android:text="Station Location"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/stationnametxt" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <Button
-        android:id="@+id/addbtn"
+        android:id="@+id/addbtnstation"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="86dp"
+        android:backgroundTint="#C6D3DD"
         android:text="Add"
-        app:layout_constraintBaseline_toBaselineOf="@+id/backbtnstation"
-        app:layout_constraintEnd_toEndOf="parent" />
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/backbtnstation"
+        app:layout_constraintTop_toBottomOf="@+id/locationtxtstation"
+        app:layout_constraintVertical_bias="0.659" />
 
     <Button
         android:id="@+id/backbtnstation"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="14dp"
-        android:layout_marginBottom="212dp"
+        android:backgroundTint="#C6D3DD"
         android:text="Back"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/addbtn" />
+        app:layout_constraintEnd_toStartOf="@+id/addbtnstation"
+        app:layout_constraintHorizontal_bias="0.126"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.866" />
+
+    <TextView
+        android:id="@+id/textView8"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Add a Station"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/textView9"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.072"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.661" />
+
+    <TextView
+        android:id="@+id/textView9"
+        android:layout_width="367dp"
+        android:layout_height="50dp"
+        android:text="Empower Your Network: Admins, Elevate Connectivity – Adding Stations with Ease!"
+        android:textSize="14sp"
+        app:layout_constraintBottom_toTopOf="@+id/stationnametxtstation"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>

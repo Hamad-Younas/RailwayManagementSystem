@@ -22,6 +22,8 @@ public class dbHandler extends SQLiteOpenHelper {
 
     @Override
     public void onCreate(SQLiteDatabase db) {
+        Log.d("db", "onCreate method called");
+
         String createUserTable = "CREATE TABLE " + param.TABLE_NAME + "("
                 + param.KEY_ID + " INTEGER PRIMARY KEY, "
                 + param.KEY_FIRST_NAME + " TEXT, "
@@ -46,6 +48,7 @@ public class dbHandler extends SQLiteOpenHelper {
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
         // Handle database schema upgrades here if needed
+
     }
 
     // Add a user to the database
@@ -87,14 +90,20 @@ public class dbHandler extends SQLiteOpenHelper {
     }
 
     // Add a station to the database
-    public boolean addStation(stations station) {
+    public void addStation(stations station) {
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues values = new ContentValues();
         values.put(param.KEY_STATION_NAME, station.getStationName());
         values.put(param.KEY_LOCATION, station.getLoc());
-        long result = db.insert(param.TABLE_NAME_STATIONS, null, values);
-        db.close();
-        return result != -1;
+
+        try {
+            db.insert(param.TABLE_NAME_STATIONS, null, values);
+            Log.d("db", "Station inserted successfully");
+        } catch (Exception e) {
+            Log.e("db", "Error inserting station: " + e.getMessage());
+        } finally {
+            db.close();
+        }
     }
     public List<users> getAllUsers(){
         List<users> contactList = new ArrayList<>();
@@ -120,6 +129,19 @@ public class dbHandler extends SQLiteOpenHelper {
         }
         return contactList;
     }
+    // Add this method to your dbHandler class
+// Add this method to your dbHandler class
+//    public void deleteUser(users user) {
+//        SQLiteDatabase db = this.getWritableDatabase();
+//        try {
+//            db.delete(param.TABLE_NAME, param.KEY_ID + " = ?", new String[]{String.valueOf(user.getId())});
+//        } catch (Exception e) {
+//            Log.e("db", "Error deleting user: " + e.getMessage());
+//        } finally {
+//            db.close();
+//        }
+//    }
+//
 
 
 

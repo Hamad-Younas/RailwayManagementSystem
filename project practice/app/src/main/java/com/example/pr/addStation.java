@@ -21,10 +21,10 @@ public class addStation extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.add_station);
 
-        stationName = findViewById(R.id.stationnametxt);
-        location = findViewById(R.id.locationtxt);
+        stationName = findViewById(R.id.stationnametxtstation);
+        location = findViewById(R.id.locationtxtstation);
 
-        button = findViewById(R.id.addbtn);
+        button = findViewById(R.id.addbtnstation);
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -33,8 +33,6 @@ public class addStation extends AppCompatActivity {
                 station.setStationName(stationName.getText().toString().trim());
                 station.setLoc(location.getText().toString().trim());
                 db.addStation(station);
-
-           
             }
         });
     }
