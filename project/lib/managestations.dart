@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:project/addTrain.dart';
 
 import 'addstation.dart';
+import 'deletestation.dart';
 
 class ManageStation extends StatelessWidget {
   @override
@@ -120,8 +122,14 @@ class ManageStation extends StatelessWidget {
                 height: 50 * fem,
                 child: ElevatedButton(
                   onPressed: () {
-                    // Handle the button action here
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => DeleteStationScreen(),
+                      ),
+                    );
                   },
+
                   style: ElevatedButton.styleFrom(
                     primary: Color(0xFFDDE0E0),
                     padding: EdgeInsets.all(16 * fem),

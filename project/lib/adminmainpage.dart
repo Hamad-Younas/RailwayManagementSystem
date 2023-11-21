@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-
+import 'package:project/addTrain.dart';
+import 'package:project/adminmakeannouncement.dart';
 import 'mainpage.dart';
 import 'managestations.dart';
-import 'managestations.dart'; // Import your ManageStation widget
 
 class adminMain extends StatelessWidget {
   @override
@@ -89,167 +89,99 @@ class adminMain extends StatelessWidget {
                   ],
                 ),
               ),
-              Container(
-                margin: EdgeInsets.fromLTRB(33 * fem, 0 * fem, 43 * fem, 19 * fem),
-                width: double.infinity,
-                height: 50 * fem,
-                child: ElevatedButton(
-                  onPressed: () {
-                    // Handle the button action here
-                  },
-                  style: ElevatedButton.styleFrom(
-                    primary: Color(0xFFDDE0E0),
-                    padding: EdgeInsets.all(16 * fem),
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(40 * fem),
+              buildElevatedButton(
+                onPressed: () {
+                  Navigator.of(context).push(
+                    MaterialPageRoute(
+                      builder: (context) => AddTrainScreen(),
                     ),
-                  ),
-                  child: Text(
-                    'Manage Trains',
-                    style: TextStyle(
-                      fontFamily: 'Inter',
-                      fontSize: 16 * ffem,
-                      fontWeight: FontWeight.w500,
-                      color: Color(0xFF0B3E7C),
-                    ),
-                  ),
-                ),
+                  );
+                },
+                label: 'Manage Trains',
+                fem: fem,
+                ffem: ffem,
               ),
-              Container(
-                margin: EdgeInsets.fromLTRB(33 * fem, 0 * fem, 43 * fem, 19 * fem),
-                width: double.infinity,
-                height: 50 * fem,
-                child: ElevatedButton(
-                  onPressed: () {
-                    Navigator.of(context).push(
-                      MaterialPageRoute(
-                        builder: (context) => ManageStation(),
-                      ),
-                    );
-                  },
-                  style: ElevatedButton.styleFrom(
-                    primary: Color(0xFFDDE0E0),
-                    padding: EdgeInsets.all(16 * fem),
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(40 * fem),
+              buildElevatedButton(
+                onPressed: () {
+                  Navigator.of(context).push(
+                    MaterialPageRoute(
+                      builder: (context) => ManageStation(),
                     ),
-                  ),
-                  child: Text(
-                    'Manage Stations',
-                    style: TextStyle(
-                      fontFamily: 'Inter',
-                      fontSize: 16 * ffem,
-                      fontWeight: FontWeight.w500,
-                      color: Color(0xFF0B3E7C),
-                    ),
-                  ),
-                ),
+                  );
+                },
+                label: 'Manage Stations',
+                fem: fem,
+                ffem: ffem,
               ),
-              Container(
-                margin: EdgeInsets.fromLTRB(33 * fem, 0 * fem, 43 * fem, 19 * fem),
-                width: double.infinity,
-                height: 50 * fem,
-                child: ElevatedButton(
-                  onPressed: () {
-                    // Handle the button action here
-                  },
-                  style: ElevatedButton.styleFrom(
-                    primary: Color(0xFFDDE0E0),
-                    padding: EdgeInsets.all(16 * fem),
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(40 * fem),
-                    ),
-                  ),
-                  child: Text(
-                    'Manage Users',
-                    style: TextStyle(
-                      fontFamily: 'Inter',
-                      fontSize: 16 * ffem,
-                      fontWeight: FontWeight.w500,
-                      color: Color(0xFF0B3E7C),
-                    ),
-                  ),
-                ),
+              buildElevatedButton(
+                onPressed: () {
+                  // Handle the button action here for "Manage Users"
+                },
+                label: 'Manage Users',
+                fem: fem,
+                ffem: ffem,
               ),
-              Container(
-                margin: EdgeInsets.fromLTRB(33 * fem, 0 * fem, 43 * fem, 19 * fem),
-                width: double.infinity,
-                height: 50 * fem,
-                child: ElevatedButton(
-                  onPressed: () {
-                    // Handle the button action here
-                  },
-                  style: ElevatedButton.styleFrom(
-                    primary: Color(0xFFDDE0E0),
-                    padding: EdgeInsets.all(16 * fem),
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(40 * fem),
-                    ),
-                  ),
-                  child: Text(
-                    'Manage Customer Queries',
-                    style: TextStyle(
-                      fontFamily: 'Inter',
-                      fontSize: 16 * ffem,
-                      fontWeight: FontWeight.w500,
-                      color: Color(0xFF0B3E7C),
-                    ),
-                  ),
-                ),
+              buildElevatedButton(
+                onPressed: () {
+                  // Handle the button action here for "Manage Customer Queries"
+                },
+                label: 'Manage Customer Queries',
+                fem: fem,
+                ffem: ffem,
               ),
-              Container(
-                margin: EdgeInsets.fromLTRB(33 * fem, 0 * fem, 43 * fem, 19 * fem),
-                width: double.infinity,
-                height: 50 * fem,
-                child: ElevatedButton(
-                  onPressed: () {
-                    // Handle the button action here
-                  },
-                  style: ElevatedButton.styleFrom(
-                    primary: Color(0xFFDDE0E0),
-                    padding: EdgeInsets.all(16 * fem),
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(40 * fem),
+              buildElevatedButton(
+                onPressed: () {
+                  Navigator.of(context).push(
+                    MaterialPageRoute(
+                      builder: (context) => MakeAnnouncement(),
                     ),
-                  ),
-                  child: Text(
-                    'Make an Announcement',
-                    style: TextStyle(
-                      fontFamily: 'Inter',
-                      fontSize: 16 * ffem,
-                      fontWeight: FontWeight.w500,
-                      color: Color(0xFF0B3E7C),
-                    ),
-                  ),
-                ),
+                  );
+                },
+                label: 'Make an Announcement',
+                fem: fem,
+                ffem: ffem,
               ),
-              Container(
-                margin: EdgeInsets.fromLTRB(33 * fem, 0 * fem, 43 * fem, 19 * fem),
-                width: double.infinity,
-                height: 50 * fem,
-                child: ElevatedButton(
-                  onPressed: () {
-                    // Handle the button action here
-                  },
-                  style: ElevatedButton.styleFrom(
-                    primary: Color(0xFFDDE0E0),
-                    padding: EdgeInsets.all(16 * fem),
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(40 * fem),
-                    ),
-                  ),
-                  child: Text(
-                    'Exit',
-                    style: TextStyle(
-                      fontFamily: 'Inter',
-                      fontSize: 16 * ffem,
-                      fontWeight: FontWeight.w500,
-                      color: Color(0xFF0B3E7C),
-                    ),
-                  ),
-                ),
+              buildElevatedButton(
+                onPressed: () {
+                  // Handle the button action here for "Exit"
+                },
+                label: 'Exit',
+                fem: fem,
+                ffem: ffem,
               ),
             ],
+          ),
+        ),
+      ),
+    );
+  }
+
+  Widget buildElevatedButton({
+    required VoidCallback onPressed,
+    required String label,
+    required double fem,
+    required double ffem,
+  }) {
+    return Container(
+      margin: EdgeInsets.fromLTRB(33 * fem, 0 * fem, 43 * fem, 19 * fem),
+      width: double.infinity,
+      height: 50 * fem,
+      child: ElevatedButton(
+        onPressed: onPressed,
+        style: ElevatedButton.styleFrom(
+          primary: Color(0xFFDDE0E0),
+          padding: EdgeInsets.all(16 * fem),
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(40 * fem),
+          ),
+        ),
+        child: Text(
+          label,
+          style: TextStyle(
+            fontFamily: 'Inter',
+            fontSize: 16 * ffem,
+            fontWeight: FontWeight.w500,
+            color: Color(0xFF0B3E7C),
           ),
         ),
       ),
