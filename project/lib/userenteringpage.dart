@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:project/bookatrip.dart';
 
 class userEnter extends StatelessWidget {
   @override
@@ -89,7 +90,12 @@ class userEnter extends StatelessWidget {
                 height: 50 * fem,
                 child: ElevatedButton(
                   onPressed: () {
-                    // Handle the button action here
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => BookATripForm(),
+                      ),
+                    );
                   },
                   style: ElevatedButton.styleFrom(
                     primary: Color(0xFFDDE0E0),
@@ -109,6 +115,7 @@ class userEnter extends StatelessWidget {
                   ),
                 ),
               ),
+
               Container(
                 margin: EdgeInsets.fromLTRB(33 * fem, 0 * fem, 43 * fem, 19 * fem),
                 width: double.infinity,

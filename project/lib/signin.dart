@@ -31,7 +31,7 @@ class SignInScreen extends StatelessWidget {
 
       try {
         var response = await http.post(
-          Uri.parse('http:// 192.168.10.31:3200/api/products/signin'),
+          Uri.parse('http://192.168.10.9:3200/api/products/signin'),
           headers: {"Content-type": "application/json"},
           body: jsonEncode(regBody),
         );

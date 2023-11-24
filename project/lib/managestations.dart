@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:project/addTrain.dart';
+import 'package:project/updatestation.dart';
 
 import 'addstation.dart';
 import 'deletestation.dart';
@@ -154,7 +155,12 @@ class ManageStation extends StatelessWidget {
                 height: 50 * fem,
                 child: ElevatedButton(
                   onPressed: () {
-                    // Handle the button action here
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => UpdateStation()
+                      ),
+                    );
                   },
                   style: ElevatedButton.styleFrom(
                     primary: Color(0xFFDDE0E0),

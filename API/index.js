@@ -5,6 +5,7 @@ const productRoutes = require('./routes/userRoutes');
 const trainRoutes = require('./routes/trainRoutes');
 const stationRoutes = require('./routes/stationRoutes');
 const announcementRoutes = require('./routes/announcementRoutes');
+const userbookingRoutes=require('./routes/userbookingRoutes');
 
 const app = express();
 const port = 3200;
@@ -16,6 +17,8 @@ app.use('/api/products', productRoutes);
 app.use('/api/train', trainRoutes);
 app.use('/api/station', stationRoutes);
 app.use('/api/announcement', announcementRoutes);
+app.use('/api/booking', userbookingRoutes);
+
 
 app.get('/', (req, res) => {
   res.send('Welcome to the wishma');

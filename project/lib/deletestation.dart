@@ -1,5 +1,4 @@
 import 'dart:convert';
-
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 
@@ -9,7 +8,7 @@ class DeleteStationScreen extends StatefulWidget {
 }
 
 class _DeleteStationScreenState extends State<DeleteStationScreen> {
-  Future<List<String>> getStations() async {
+  Future<dynamic> getStations() async {
     try {
       var response = await http.get(
         Uri.parse('http://192.168.10.31:3200/api/train/names'),
@@ -22,25 +21,22 @@ class _DeleteStationScreenState extends State<DeleteStationScreen> {
           var jsonResponse = jsonDecode(response.body);
           if (jsonResponse['status']) {
             List<String> stations = List<String>.from(jsonResponse['data']);
-            print("Stations: $stations");
             return stations;
           } else {
             // Handle error case
-            print("Error: ${jsonResponse['message']}");
-            return [];
+            return jsonResponse['message'];
           }
         } else {
-          print("Non-JSON response: ${response.body}");
-          return [];
+          // Non-JSON response
+          return response.body;
         }
       } else {
-        print("Error: ${response.statusCode}");
-        print("Response: ${response.body}");
-        return [];
+        // Handle error case
+        return "Error: ${response.statusCode}";
       }
     } catch (e) {
-      print("Error: $e");
-      return [];
+      // Handle exception
+      return "Error: $e";
     }
   }
 
@@ -52,23 +48,20 @@ class _DeleteStationScreenState extends State<DeleteStationScreen> {
       ),
       body: Container(
         height: double.infinity,
-        child: FutureBuilder<List<String>>(
+        child: FutureBuilder<dynamic>(
           future: getStations(),
           builder: (context, snapshot) {
             if (snapshot.connectionState == ConnectionState.waiting) {
               return CircularProgressIndicator();
             } else if (snapshot.hasError) {
               return Text('Error: ${snapshot.error}');
-            } else if (snapshot.data == null || snapshot.data!.isEmpty) {
-              return Text('No data available');
             } else {
-              List<String> stations = snapshot.data!;
-              print("Number of stations: ${stations.length}");
+              // Display the response in the ListView
               return ListView.builder(
-                itemCount: stations.length,
+                itemCount: 1, // Display a single item for simplicity
                 itemBuilder: (context, index) {
                   return ListTile(
-                    title: Text(stations[index]),
+                    title: Text(snapshot.data.toString()),
                   );
                 },
               );
