@@ -50,6 +50,20 @@ async function updateStation(req, res) {
   }
 }
 
+async function getStations(req, res) {
+  try {
+    // Fetch all distinct train names from the Train collection
+    const stationNames = await station.distinct('stationName');
+   
+    
+    // Return the results as an object
+    res.status(200).json({ stationNames});
+  } catch (error) {
+    console.error(error); // Log the error for debugging purposes
+    res.status(500).json({ status: false, message: 'Error getting station attributes', error: error.message });
+  }
+}
+
 module.exports = {
-    addStation,getAllAttributes,updateStation,
+    addStation,getAllAttributes,updateStation,getStations,
     };

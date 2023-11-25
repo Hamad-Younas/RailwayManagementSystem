@@ -6,6 +6,7 @@ const trainRoutes = require('./routes/trainRoutes');
 const stationRoutes = require('./routes/stationRoutes');
 const announcementRoutes = require('./routes/announcementRoutes');
 const userbookingRoutes=require('./routes/userbookingRoutes');
+const reviewRoutes=require('./routes/reviewRoutes');
 
 const app = express();
 const port = 3200;
@@ -18,6 +19,7 @@ app.use('/api/train', trainRoutes);
 app.use('/api/station', stationRoutes);
 app.use('/api/announcement', announcementRoutes);
 app.use('/api/booking', userbookingRoutes);
+app.use('/api/review', reviewRoutes);
 
 
 app.get('/', (req, res) => {
