@@ -1,14 +1,17 @@
 import 'package:flutter/material.dart';
 import 'package:project/addTrain.dart';
 import 'package:project/adminmakeannouncement.dart';
-import 'mainpage.dart';
-import 'managestations.dart';
+import 'package:project/customereviews.dart';
+import 'package:project/manageuser.dart';
+import 'package:project/deleteannouncement.dart'; // Added import for DeleteAnnouncement
+import 'package:project/mainpage.dart';
+import 'package:project/managestations.dart';
 
-class adminMain extends StatelessWidget {
+class adminMain extends StatelessWidget { // Corrected class name to follow Dart naming conventions
   @override
   Widget build(BuildContext context) {
-    double ffem = 1.0; // You can define your own scaling factor if needed
-    double fem = 1.0; // You can define your own scaling factor if needed
+    double ffem = 1.0;
+    double fem = 1.0;
     return Scaffold(
       appBar: AppBar(
         leading: IconButton(
@@ -21,6 +24,7 @@ class adminMain extends StatelessWidget {
             );
           },
         ),
+        title: Text('Menu'),
       ),
       body: SingleChildScrollView(
         child: Container(
@@ -115,7 +119,11 @@ class adminMain extends StatelessWidget {
               ),
               buildElevatedButton(
                 onPressed: () {
-                  // Handle the button action here for "Manage Users"
+                  Navigator.of(context).push(
+                    MaterialPageRoute(
+                      builder: (context) => ManageUser(),
+                    ),
+                  );
                 },
                 label: 'Manage Users',
                 fem: fem,
@@ -123,9 +131,13 @@ class adminMain extends StatelessWidget {
               ),
               buildElevatedButton(
                 onPressed: () {
-                  // Handle the button action here for "Manage Customer Queries"
+                  Navigator.of(context).push(
+                    MaterialPageRoute(
+                      builder: (context) => CustomerReview(),
+                    ),
+                  );
                 },
-                label: 'Manage Customer Queries',
+                label: 'Customer Reviews',
                 fem: fem,
                 ffem: ffem,
               ),
@@ -143,9 +155,13 @@ class adminMain extends StatelessWidget {
               ),
               buildElevatedButton(
                 onPressed: () {
-                  // Handle the button action here for "Exit"
+                  Navigator.of(context).push(
+                    MaterialPageRoute(
+                      builder: (context) => DeleteAnnouncement(), // Corrected class name to DeleteAnnouncement
+                    ),
+                  );
                 },
-                label: 'Exit',
+                label: 'Delete Announcements',
                 fem: fem,
                 ffem: ffem,
               ),

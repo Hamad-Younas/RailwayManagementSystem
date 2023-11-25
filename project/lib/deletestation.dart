@@ -8,36 +8,79 @@ class DeleteStationScreen extends StatefulWidget {
 }
 
 class _DeleteStationScreenState extends State<DeleteStationScreen> {
-  Future<dynamic> getStations() async {
-    try {
-      var response = await http.get(
-        Uri.parse('http://192.168.10.31:3200/api/train/names'),
-        headers: {"Content-type": "application/json"},
-      );
+  List<String> stationDropdownOptions = [];
+  String selectedStationDropdownValue = '';
+  List<String> dropdownOptions1 = [];
+  String selectedDropdownValue1 = '';
+  List<String> trainDropdownOptions = [];
+  String selectedTrainDropdownValue = '';
+  List<String> dropdownOptions2 = [];
+  String selectedDropdownValue2 = '';
 
+  @override
+  void initState() {
+    getData();
+    getDataForStations();
+    super.initState();
+  }
+
+  void getData() async {
+    try {
+      final response = await http.get(Uri.parse('http://192.168.10.9:3200/api/train/names'));
       if (response.statusCode == 200) {
-        if (response.headers['content-type']?.toLowerCase() ==
-            'application/json') {
-          var jsonResponse = jsonDecode(response.body);
-          if (jsonResponse['status']) {
-            List<String> stations = List<String>.from(jsonResponse['data']);
-            return stations;
-          } else {
-            // Handle error case
-            return jsonResponse['message'];
-          }
+        var jsonResponse = jsonDecode(response.body);
+        if (jsonResponse['trainNames'] is List) {
+          List<String> trainNames = List<String>.from(jsonResponse['trainNames']);
+          setState(() {
+            dropdownOptions1 = trainNames;
+            selectedDropdownValue1 = dropdownOptions1.isNotEmpty ? dropdownOptions1.first : '';
+          });
         } else {
-          // Non-JSON response
-          return response.body;
+          print("Error: 'trainNames' key not found or not a list");
         }
       } else {
-        // Handle error case
-        return "Error: ${response.statusCode}";
+        print("Error: ${response.statusCode}");
+        print("Response: ${response.body}");
       }
     } catch (e) {
-      // Handle exception
-      return "Error: $e";
+      print("Exception during API call: $e");
+      setState(() {
+        dropdownOptions1 = [];
+        selectedDropdownValue1 = '';
+      });
     }
+  }
+
+  void getDataForStations() async {
+    try {
+      final response = await http.get(Uri.parse('http://192.168.10.9:3200/api/station/display'));
+      if (response.statusCode == 200) {
+        var jsonResponse = jsonDecode(response.body);
+        if (jsonResponse['stationName'] is List) {
+          List<String> stationNames = List<String>.from(jsonResponse['stationName']);
+          setState(() {
+            dropdownOptions2 = stationNames;
+            selectedDropdownValue2 = dropdownOptions2.isNotEmpty ? dropdownOptions2.first : '';
+          });
+        } else {
+          print("Error: 'stationName' key not found or not a list");
+        }
+      } else {
+        print("Error: ${response.statusCode}");
+        print("Response: ${response.body}");
+      }
+    } catch (e) {
+      print("Exception during API call: $e");
+      setState(() {
+        dropdownOptions2 = [];
+        selectedDropdownValue2 = '';
+      });
+    }
+  }
+
+  void deleteTrain() {
+    // Add your logic for deleting the selected train
+    print('Train deleted: $selectedTrainDropdownValue');
   }
 
   @override
@@ -48,25 +91,54 @@ class _DeleteStationScreenState extends State<DeleteStationScreen> {
       ),
       body: Container(
         height: double.infinity,
-        child: FutureBuilder<dynamic>(
-          future: getStations(),
-          builder: (context, snapshot) {
-            if (snapshot.connectionState == ConnectionState.waiting) {
-              return CircularProgressIndicator();
-            } else if (snapshot.hasError) {
-              return Text('Error: ${snapshot.error}');
-            } else {
-              // Display the response in the ListView
-              return ListView.builder(
-                itemCount: 1, // Display a single item for simplicity
-                itemBuilder: (context, index) {
-                  return ListTile(
-                    title: Text(snapshot.data.toString()),
-                  );
-                },
-              );
-            }
-          },
+        padding: EdgeInsets.all(16.0),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            // Dropdown for Train Name
+            DropdownButton(
+              value: selectedDropdownValue1,
+              onChanged: (String? newValue) {
+                setState(() {
+                  selectedDropdownValue1 = newValue!;
+                });
+              },
+              items: dropdownOptions1.map<DropdownMenuItem<String>>((String value) {
+                return DropdownMenuItem<String>(
+                  value: value,
+                  child: Text(value),
+                );
+              }).toList(),
+            ),
+
+            SizedBox(height: 20),
+
+            // Dropdown for Station Name
+            DropdownButton(
+              value: selectedDropdownValue2,
+              onChanged: (String? newValue) {
+                setState(() {
+                  selectedDropdownValue2 = newValue!;
+                });
+              },
+              items: dropdownOptions2.map<DropdownMenuItem<String>>((String value) {
+                return DropdownMenuItem<String>(
+                  value: value,
+                  child: Text(value),
+                );
+              }).toList(),
+            ),
+
+            SizedBox(height: 20),
+
+            // Delete Button
+            ElevatedButton(
+              onPressed: () {
+                deleteTrain();
+              },
+              child: Text('Delete'),
+            ),
+          ],
         ),
       ),
     );

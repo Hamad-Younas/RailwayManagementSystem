@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:project/LatestNewsAndDiscounts.dart';
 import 'package:project/bookatrip.dart';
+
+import 'review.dart';
 
 class userEnter extends StatelessWidget {
   @override
@@ -15,7 +18,7 @@ class userEnter extends StatelessWidget {
             Navigator.pop(context);
           },
         ),
-        title: Text('User Enter'),
+        title: Text('Menu'),
       ),
       body: SingleChildScrollView(
         child: Container(
@@ -174,7 +177,12 @@ class userEnter extends StatelessWidget {
                 height: 50 * fem,
                 child: ElevatedButton(
                   onPressed: () {
-                    // Handle the button action here
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => LatestNewsAndDiscounts(),
+                      ),
+                    );
                   },
                   style: ElevatedButton.styleFrom(
                     primary: Color(0xFFDDE0E0),
@@ -200,7 +208,12 @@ class userEnter extends StatelessWidget {
                 height: 50 * fem,
                 child: ElevatedButton(
                   onPressed: () {
-                    // Handle the button action here
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => Review(),
+                      ),
+                    );
                   },
                   style: ElevatedButton.styleFrom(
                     primary: Color(0xFFDDE0E0),
@@ -210,7 +223,7 @@ class userEnter extends StatelessWidget {
                     ),
                   ),
                   child: Text(
-                    'Ask a question',
+                    'Leave a review',
                     style: TextStyle(
                       fontFamily: 'Inter',
                       fontSize: 16 * ffem,
@@ -220,32 +233,7 @@ class userEnter extends StatelessWidget {
                   ),
                 ),
               ),
-              Container(
-                margin: EdgeInsets.fromLTRB(33 * fem, 0 * fem, 43 * fem, 19 * fem),
-                width: double.infinity,
-                height: 50 * fem,
-                child: ElevatedButton(
-                  onPressed: () {
-                    // Handle the button action here
-                  },
-                  style: ElevatedButton.styleFrom(
-                    primary: Color(0xFFDDE0E0),
-                    padding: EdgeInsets.all(16 * fem),
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(40 * fem),
-                    ),
-                  ),
-                  child: Text(
-                    'Exit',
-                    style: TextStyle(
-                      fontFamily: 'Inter',
-                      fontSize: 16 * ffem,
-                      fontWeight: FontWeight.w500,
-                      color: Color(0xFF0B3E7C),
-                    ),
-                  ),
-                ),
-              ),
+
             ],
           ),
         ),

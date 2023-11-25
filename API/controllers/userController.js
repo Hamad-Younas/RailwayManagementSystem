@@ -12,14 +12,16 @@ async function createProduct(req,res){
     }
 }
 
-async function getAllProducts(req,res){
-    try{
-        const products=await Product.find();
-        res.json(products);
-    }catch(err){
-        res.status(500).json({error: err.message});
+async function getAllProducts(req, res) {
+    try {
+        const products = await Product.find({}, 'email');
+        const emails = products.map(product => product.email);
+        res.json(emails);
+    } catch (err) {
+        res.status(500).json({ error: err.message });
     }
 }
+
 async function updateProduct(req,res){
     try{
         const{id}=req.params;
@@ -31,16 +33,26 @@ async function updateProduct(req,res){
 
     }
 
-}
-async function deleteProduct(req,res){
-    try{
-        const {id}=req.params;
-        await Product.findByIdAndUpdate(id);
+}async function deleteProduct(req, res) {
+    try {
+        const { title } = req.params;
+        console.log(`Deleting email with title: ${title}`);
+        
+        // Use { title } in the query instead of { email: title }
+        const deletedAnnouncement = await Product.findOneAndDelete({ title });
+
+        if (!deletedAnnouncement) {
+            return res.status(404).json({ message: 'email not found' });
+        }
+
         res.sendStatus(204);
-    }catch(err){
-        res.status(500).json({error:err.message});
+    } catch (err) {
+        console.error(err);
+        res.status(500).json({ error: 'Internal Server Error' });
     }
-}async function loginfunc(req, res) {
+}
+
+async function loginfunc(req, res) {
     try {
         const user = await Product.findOne({ email: req.body.email });
 
